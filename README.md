@@ -1,6 +1,6 @@
-# Azure Cloud Security Monitoring and Threat Visibility
+# Azure Cloud Security Monitoring and Threat Visibility with Microsoft Sentinel
 
-### Deploying Microsoft Sentinel as a production-minded SIEM across an existing cloud-managed endpoint environment — with custom detection engineering, incident investigation, automated response, and operational endpoint health reporting.
+### Deploying Microsoft Sentinel as a production-minded SIEM across an existing cloud-managed endpoint environment, with custom detection engineering, incident investigation, automated response, and endpoint health reporting.
 
 > This project is the third and final entry in a three-part portfolio series focused on identity governance, endpoint management, and security operations in a Microsoft cloud environment.
 
@@ -16,7 +16,7 @@ This project is the third and final entry in a three-project Microsoft cloud por
 
 The project deploys Microsoft Sentinel connected to Microsoft Entra ID and Microsoft Defender for Endpoint, engineers a layered detection ruleset including a custom KQL analytics rule, validates real incident generation and investigation, automates alert response through a Logic App playbook, and delivers operational endpoint health reporting via Microsoft Graph PowerShell.
 
-The environment is not a standalone lab. It extends the same Azure tenant, Entra ID identity structure, and Intune-managed endpoints built across the first two projects — making this a continuous, production-minded infrastructure story rather than a collection of disconnected exercises.
+The environment is not a standalone lab. It extends the same Azure tenant, Entra ID structure, and Intune-managed endpoints built in the first two projects, making this a continuous production-minded infrastructure story rather than a collection of disconnected exercises.
 
 ---
 
@@ -30,7 +30,6 @@ The environment is not a standalone lab. It extends the same Azure tenant, Entra
 - Configured a Sentinel automation rule wiring the playbook to the brute force detection rule
 - Deployed a Microsoft Entra ID Sign-in logs workbook providing sign-in trend analysis, failure breakdown, and geographic visibility
 - Built `Get-CloudEndpointInventory.ps1` via Microsoft Graph PowerShell delivering automated device compliance, OS version, and stale device reporting across all managed endpoints
-- Documented real-world findings including analytics rule scheduler behavior, portal migration friction, and data connector diagnostic setting propagation
 
 ---
 
@@ -61,7 +60,7 @@ This project addresses all three requirements through a layered monitoring archi
 ┌─────────────────────────────────────────────────────────────┼───┐
 │           Microsoft Defender for Endpoint                    │   │
 │                                                              │   │
-│  vm-p2-winclient (casey.quinn)  ─────── DeviceInfo ─────────┤   │
+│  vm-p2-winclient01 (casey.quinn)  ─────── DeviceInfo ─────────┤   │
 │  vm-p2-winclient02 (alex.rivers) ────── DeviceLogonEvents ──┤   │
 │                                         AlertInfo ──────────┤   │
 │                                         AlertEvidence ──────┤   │
@@ -99,6 +98,19 @@ This project addresses all three requirements through a layered monitoring archi
 
 ---
 
+## Supporting Documentation
+
+Detailed supporting documents for this project are available in the `docs/` folder:
+
+- [Architecture Diagram](docs/architecture-diagram.md)
+- [Analytics Rules](docs/analytics-rules.md)
+- [Data Connector Configuration](docs/data-connector-configuration.md)
+- [Incident Investigation Workflow](docs/incident-investigation-workflow.md)
+- [Playbook Design](docs/playbook-design.md)
+- [Workbook Design](docs/workbook-design.md)
+
+---
+
 ## Phase 0 — Pre-Production Validation
 
 Before deploying any new resources, the existing Project 2 environment was validated to confirm it remained in a known good state. This mirrors how production change windows are managed — verifying the baseline before introducing new layers.
@@ -113,7 +125,7 @@ Before deploying any new resources, the existing Project 2 environment was valid
 
 | Device | Compliance | OS Version | Last Check-in | Primary User |
 |---|---|---|---|---|
-| vm-p2-winclient | Compliant | 10.0.26200.4946 | 04/03/2026 | casey.quinn |
+| vm-p2-winclient01 | Compliant | 10.0.26200.4946 | 04/03/2026 | casey.quinn |
 | vm-p2-winclient02 | Compliant | 10.0.26200.8037 | 04/03/2026 | alex.rivers |
 
 ---
@@ -474,7 +486,8 @@ azure-cloud-security-monitoring/
 │   ├── analytics-rules.md
 │   ├── data-connector-configuration.md
 │   ├── incident-investigation-workflow.md
-│   └── playbook-design.md
+│   ├── playbook-design.md
+│   └── workbook-design.md
 └── evidence/
     ├── phase0-environment-validation/
     ├── phase1-sentinel-deployment/
