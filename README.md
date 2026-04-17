@@ -346,7 +346,7 @@ vm-p2-winclient    Compliant        0.10              Current      10.0.26200.49
 DeviceName         PrimaryUser
 ----------         -----------
 vm-p2-winclient02  alex.rivers@mannylabsacctgmail.onmicrosoft.com
-vm-p2-winclient    casey.quinn@mannylabsacctgmail.onmicrosoft.com
+vm-p2-winclient01    casey.quinn@mannylabsacctgmail.onmicrosoft.com
 
 [+] Report exported to: C:\Users\Emmanuel\Desktop\CloudEndpointInventory_20260413_161211.csv
 [+] Disconnected from Microsoft Graph
@@ -500,6 +500,8 @@ azure-cloud-security-monitoring/
 ```
 
 ---
+
+This project completes a three-part Microsoft cloud portfolio focused on identity, endpoint, and security operations.
 
 ## Author
 
